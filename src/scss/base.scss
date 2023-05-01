@@ -1,0 +1,145 @@
+//==========markup page==================
+html,
+body {
+	height: 100%;
+	background-color: rgb(47, 47, 47);
+	color: white;
+	font-size: 24px;
+}
+
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	min-height: 40px;
+	border: 2px solid black;
+	background-color: rgb(61, 61, 107);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+main {
+	flex: 1 1 auto;
+}
+
+footer {
+	min-height: 40px;
+	border: 2px solid black;
+	background-color: rgb(79, 113, 72);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+//=========tehnical classes===============
+._ibg {
+	position: relative;
+
+	img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+._container {
+	max-width: 1230px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+//===========general========
+.title {
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+
+//===========page===========
+.wrapper {}
+
+.page {
+
+	// .page__text
+
+	&__text {}
+
+	// .page__gallery
+
+	&__gallery {}
+
+	// .page__articles
+
+	&__articles {}
+}
+
+.text {
+
+	&__container {
+		border: 2px solid black;
+		background-color: rgb(134, 56, 56);
+		padding: 30px 15px;
+	}
+
+	&__body {}
+
+	// .text__title
+
+	&__title {}
+
+	// .text__content
+
+	&__content {}
+}
+
+.gallery {
+
+
+	&__container {
+		padding: 30px 15px;
+		border: 2px solid black;
+		background-color: rgb(129, 65, 105);
+	}
+
+	// .gallery__body
+
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-auto-flow: row;
+		gap: 20px;
+
+	}
+
+	// .gallery__item
+
+	&__item {
+		height: 200px;
+	}
+}
+
+.articles {
+
+	// .articles__title
+
+	&__title {}
+
+	// .articles__body
+
+	&__body {}
+
+	// .articles__article
+
+	&__article {}
+}
