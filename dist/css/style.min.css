@@ -182,6 +182,10 @@ footer {
   text-align: center;
 }
 
+._noload img {
+  opacity: 0;
+}
+
 .text__body {
   border: 2px solid black;
   background-color: rgb(134, 56, 56);
@@ -246,4 +250,19 @@ footer {
 }
 .articles__article:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.map__body {
+  border: 2px solid black;
+  background-color: rgb(56, 127, 134);
+  padding: 30px 15px;
+  margin: 0 20px;
+}
+.map__title {
+  margin-bottom: 30px;
+}
+.map__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

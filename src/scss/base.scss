@@ -65,6 +65,12 @@ footer {
 	text-align: center;
 }
 
+._noload {
+	img {
+		opacity: 0;
+	}
+}
+
 //===========page===========
 .wrapper {}
 
@@ -81,6 +87,8 @@ footer {
 	// .page__articles
 
 	&__articles {}
+
+	&__map {}
 }
 
 .text {
@@ -188,5 +196,35 @@ footer {
 		&:not(:last-child) {
 			margin-bottom: 20px;
 		}
+	}
+}
+
+.map {
+
+	// .map__container
+
+	&__container {}
+
+	// .map__body
+
+	&__body {
+		border: 2px solid black;
+		background-color: rgb(56, 127, 134);
+		padding: 30px 15px;
+		margin: 0 20px;
+	}
+
+	// .map__title
+
+	&__title {
+		margin-bottom: 30px;
+	}
+
+	// .map__wrapper
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
