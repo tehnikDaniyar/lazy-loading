@@ -143,6 +143,10 @@ footer {
 		border: 1px solid white;
 		position: relative;
 
+		img {
+			transition: opacity 0.8s ease 0s;
+		}
+
 		&::before {
 			content: "";
 			position: absolute;
@@ -223,8 +227,26 @@ footer {
 	// .map__wrapper
 
 	&__wrapper {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 600px;
+		height: 450px;
+		margin: 0 auto;
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: 5px solid rgba(255, 255, 255, .1);
+			border-top: 5px dotted rgba(255, 255, 255, 1);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: animate 1s infinite linear;
+		}
 	}
 }

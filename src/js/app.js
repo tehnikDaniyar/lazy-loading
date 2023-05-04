@@ -1,5 +1,5 @@
 import * as flsFunctions from "./modules/functions.js";
-import { animation } from "./modules/animation.js";
+import { lazyLoading } from "./modules/lazyLoading.js";
 
 flsFunctions.isWebp();
-animation();
+lazyLoading();
