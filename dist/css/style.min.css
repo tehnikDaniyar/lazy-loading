@@ -142,6 +142,8 @@ header {
   justify-content: center;
   text-transform: uppercase;
   font-weight: bold;
+  position: sticky;
+  top: 0;
 }
 
 main {
@@ -182,10 +184,6 @@ footer {
   text-align: center;
 }
 
-._noload img {
-  opacity: 0;
-}
-
 .text__body {
   border: 2px solid black;
   background-color: rgb(134, 56, 56);
@@ -214,6 +212,9 @@ footer {
 }
 .gallery__item img {
   transition: opacity 0.8s ease 0s;
+}
+.gallery__item img[data-src] {
+  opacity: 0;
 }
 .gallery__item::before {
   content: "";

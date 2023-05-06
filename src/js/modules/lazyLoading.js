@@ -3,6 +3,7 @@ export const lazyLoading = () => {
 	// if ('loading' in HTMLImageElement.prototype) {
 	// 	// supported in browser
 	// } else {
+
 	// };
 
 	const lazyImages = document.querySelectorAll('img[data-src]');
@@ -17,12 +18,27 @@ export const lazyLoading = () => {
 		lazyImages.forEach(img => {
 			console.log(img);
 			if (img.dataset.src) {
-				lazyImagesPosition.push(img.getBoundingClientRect().top)
+				lazyImagesPosition.push(img.getBoundingClientRect().top + pageYOffset);
+				lazyScrollCheck();
 			};
 		})
 	};
 
-	console.log(lazyImagesPosition);
+	window.addEventListener('scroll', () => {
+		lazyScrollCheck();
+	});
 
+	function lazyScrollCheck() {
+		let imgIndex = lazyImagesPosition.findIndex(item => pageYOffset > item - windowHeight);
+		if (imgIndex >= 0) {
+			if (lazyImages[imgIndex].dataset.src) {
+				lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
+				lazyImages[imgIndex].removeAttribute('data-src');
+			};
+			delete lazyImagesPosition[imgIndex];
+		};
+	};
+
+	console.log(lazyImagesPosition)
 
 }
