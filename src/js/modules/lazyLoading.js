@@ -7,7 +7,7 @@ export const lazyLoading = () => {
 	// };
 
 	const lazyImages = document.querySelectorAll('img[data-src]');
-	const loadMapBlock = document.querySelector('._loadmap');
+	const loadMapBlock = document.querySelectorAll('._load-map');
 	const windowHeight = document.documentElement.clientHeight;
 
 	console.log(lazyImages);
@@ -19,26 +19,57 @@ export const lazyLoading = () => {
 			console.log(img);
 			if (img.dataset.src) {
 				lazyImagesPosition.push(img.getBoundingClientRect().top + pageYOffset);
-				lazyScrollCheck();
+				lazyScrollCheck(lazyImages, lazyImagesPosition);
 			};
 		})
 	};
 
-	window.addEventListener('scroll', () => {
-		lazyScrollCheck();
-	});
 
-	function lazyScrollCheck() {
-		let imgIndex = lazyImagesPosition.findIndex(item => pageYOffset > item - windowHeight);
+
+	// function lazyScrollCheck() {
+	// 	let imgIndex = lazyImagesPosition.findIndex(item => pageYOffset > item - windowHeight);
+	// 	if (imgIndex >= 0) {
+	// 		if (lazyImages[imgIndex].dataset.src) {
+	// 			lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
+	// 			lazyImages[imgIndex].removeAttribute('data-src');
+	// 		};
+	// 		delete lazyImagesPosition[imgIndex];
+	// 	};
+	// };
+
+	function lazyScrollCheck(nodelist, arrOfPositions) {
+		let imgIndex = arrOfPositions.findIndex(item => pageYOffset > item - windowHeight);
 		if (imgIndex >= 0) {
-			if (lazyImages[imgIndex].dataset.src) {
-				lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
-				lazyImages[imgIndex].removeAttribute('data-src');
+			if (nodelist[imgIndex].dataset.src || nodelist[imgIndex].dataset.map) {
+
+				if (nodelist[imgIndex].src) {
+					nodelist[imgIndex].src = nodelist[imgIndex].dataset.src;
+					nodelist[imgIndex].removeAttribute('data-src');
+				} else if (nodelist[imgIndex].map) {
+
+				};
 			};
-			delete lazyImagesPosition[imgIndex];
+			delete arrOfPositions[imgIndex];
 		};
 	};
 
-	console.log(lazyImagesPosition)
+	console.log(loadMapBlock);
+	let lazyMapPositions = [];
+
+	if (loadMapBlock.length > 0) {
+		loadMapBlock.forEach(mapBlock => {
+			if (mapBlock.dataset.map) {
+				lazyMapPositions.push(mapBlock.getBoundingClientRect().top + pageYOffset);
+			};
+		});
+	};
+
+
+	window.addEventListener('scroll', () => {
+		lazyScrollCheck(lazyImages, lazyImagesPosition);
+		lazyScrollCheck(loadMapBlock, lazyMapPositions);
+	});
+
+
 
 }
